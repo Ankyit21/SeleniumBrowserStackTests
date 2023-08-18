@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK for Chrome
         uses: actions/setup-java@v2
         with:
           java-version: 11
@@ -29,7 +29,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK for Safari
         uses: actions/setup-java@v2
         with:
           java-version: 11
@@ -45,7 +45,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK for Firefox
         uses: actions/setup-java@v2
         with:
           java-version: 11
@@ -61,7 +61,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK for iOS
         uses: actions/setup-java@v2
         with:
           java-version: 11
@@ -77,7 +77,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK for Android
         uses: actions/setup-java@v2
         with:
           java-version: 11
