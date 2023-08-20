@@ -30,12 +30,16 @@ public class SampleTest {
 
     @Before
     public void setUp() throws Exception {
+        String browserstackUsername = System.getenv("BROWSERSTACK_USERNAME");
+        String browserstackAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browser", "Chrome");
         caps.setCapability("browser_version", "latest");
         caps.setCapability("os", "Windows");
         caps.setCapability("os_version", "10");
         caps.setCapability("browserstack.appstore_distribution", "public");
+        caps.setCapability("browserstack.user", browserstackUsername);
+        caps.setCapability("browserstack.key", browserstackAccessKey);
 
         // Initialize WebDriver for Chrome on Windows
         driver = new RemoteWebDriver(new URL("https://hub.browserstack.com/wd/hub"), caps);
