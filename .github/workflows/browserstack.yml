@@ -1,4 +1,5 @@
-name: BrowserStack Selenium Tests
+name: SeleniumBrowserStackTests
+
 
 on:
   push:
