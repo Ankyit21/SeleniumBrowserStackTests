@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  test_chrome:
-    runs-on: ubuntu-latest
+  test_chrome_windows:
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -18,70 +18,6 @@ jobs:
         with:
           java-version: 11
 
-      - name: Build with Maven and Run Chrome Tests
+      - name: Build with Maven and Run Chrome Tests on Windows
         run: |
-          mvn clean test -Dbrowserstack.username=$BROWSERSTACK_USERNAME -Dbrowserstack.accesskey=$BROWSERSTACK_ACCESS_KEY
-
-  test_safari:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK for Safari
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-
-      - name: Build with Maven and Run Safari Tests
-        run: |
-          mvn clean test -Dbrowserstack.username=$BROWSERSTACK_USERNAME -Dbrowserstack.accesskey=$BROWSERSTACK_ACCESS_KEY
-
-  test_firefox:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK for Firefox
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-
-      - name: Build with Maven and Run Firefox Tests
-        run: |
-          mvn clean test -Dbrowserstack.username=$BROWSERSTACK_USERNAME -Dbrowserstack.accesskey=$BROWSERSTACK_ACCESS_KEY
-
-  test_ios:
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK for iOS
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-
-      - name: Build with Maven and Run iOS Tests
-        run: |
-          mvn clean test -Dbrowserstack.username=$BROWSERSTACK_USERNAME -Dbrowserstack.accesskey=$BROWSERSTACK_ACCESS_KEY
-
-  test_android:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up JDK for Android
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-
-      - name: Build with Maven and Run Android Tests
-        run: |
-          mvn clean test -Dbrowserstack.username=$BROWSERSTACK_USERNAME -Dbrowserstack.accesskey=$BROWSERSTACK_ACCESS_KEY
+          mvn clean test -Dbrowserstack.username=${{ secrets.BROWSERSTACK_USERNAME }} -Dbrowserstack.accesskey=${{ secrets.BROWSERSTACK_ACCESS_KEY }} -Ddistribution=Windows_10
