@@ -27,7 +27,8 @@ public class SampleTest {
         // Navigate to jointhespot.com
         driver.get("https://dev.d1oh6kkp7wvoqq.amplifyapp.com");
 
-        WebElement element = driver.findElement(By.xpath("//a[@data-bs-toggle='modal' and @data-bs-target='#login-popup' and contains(@class, 'btn-login') and text()='Login']"));
+        WebElement element = driver.findElement(By.xpath("abc"));
+        //a[@data-bs-toggle='modal' and @data-bs-target='#login-popup' and contains(@class, 'btn-login') and text()='Login']
         element.click();
         System.out.println("Element clicked");
 
