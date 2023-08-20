@@ -20,4 +20,4 @@ jobs:
 
       - name: Build with Maven and Run Chrome Tests on Windows
         run: |
-          mvn clean test -Dbrowserstack.username=${{ secrets.BROWSERSTACK_USERNAME }} -Dbrowserstack.accesskey=${{ secrets.BROWSERSTACK_ACCESS_KEY }} -Ddistribution=Windows_10
+          mvn clean test -Dbrowserstack.username=${{ secrets.BROWSERSTACK_USERNAME }} -Dbrowserstack.accesskey=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
