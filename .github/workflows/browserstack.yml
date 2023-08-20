@@ -1,5 +1,4 @@
-name: SeleniumBrowserStackTests
-
+name: BrowserStack Selenium Tests
 
 on:
   push:
@@ -20,22 +19,6 @@ jobs:
           distribution: 'adopt'  # Use 'adopt' for AdoptOpenJDK
           java-version: '11'     # Specify the desired Java version
 
-      - name: Set up Chrome browser
-        uses: https://github.com/browserstack/github-action
-
-        with:
-          username: ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          os: "Windows"
-          os_version: "11"
-          browser: "chrome"
-          browser_version: "latest"
-
-      - name: Run Selenium Tests
+      - name: Build with Maven and Run Chrome Tests on Windows
         run: |
-          mvn test -Dtest=SampleTest  # Adjust this command as needed
-
-      - name: Clean up Chrome browser
-        uses: browserstack/github-action@v2
-        with:
-          delete: true
+          mvn clean test -Dtest=SampleTest -D browserstack.username=${{ secrets.BROWSERSTACK_USERNAME }} -D browserstack.accesskey=${{ secrets.BROWSERSTACK_ACCESS_KEY }} -Dbrowserstack.os=Windows -Dbrowserstack.os_version=10 -Dbrowserstack.browser=chrome -Dbrowserstack.browser_version=latest
