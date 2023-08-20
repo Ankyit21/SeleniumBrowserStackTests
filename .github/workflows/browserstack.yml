@@ -1,4 +1,4 @@
-name: SeleniumBrowserStackTests
+name: Selenium Tests
 
 on:
   push:
@@ -6,35 +6,23 @@ on:
       - main
 
 jobs:
-  test_chrome_windows:
-    runs-on: windows-latest
+  run_tests:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK for Chrome
+      - name: Set up Java
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
 
-      - name: Set up Chrome browser
-        uses: browserstack/github-action@v2
-        with:
-          username: ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          os: "Windows"
-          os_version: "10"
-          browser: "chrome"
-          browser_version: "latest"
-
-      - name: Run Selenium Tests
+      - name: Set up BrowserStack credentials
         run: |
-          mvn test -Dtest=com.JointheSpot.SampleTest
+          echo "BROWSERSTACK_USERNAME=${{ secrets.BROWSERSTACK_USERNAME }}" >> $GITHUB_ENV
+          echo "BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }}" >> $GITHUB_ENV
 
-
-      - name: Clean up Chrome browser
-        uses: browserstack/github-action@v2
-        with:
-          delete: true
+      - name: Run Selenium tests
+        run: mvn test -Dtest=com.JointheSpot.SampleTest
