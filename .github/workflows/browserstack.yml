@@ -21,7 +21,7 @@ jobs:
           java-version: '11'     # Specify the desired Java version
 
       - name: Set up Chrome browser
-        uses: browserstack/github-action@master
+        uses: browserstack/github-action@v2
         with:
           username: ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
