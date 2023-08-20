@@ -16,8 +16,8 @@ jobs:
       - name: Set up JDK for Chrome
         uses: actions/setup-java@v2
         with:
-            distribution: 'openjdk'
-            java-version: '11' # Specify the desired Java version
+            distribution: 'jdk'  # Use 'jdk' for Oracle OpenJDK
+            java-version: '11'   # Specify the desired Java version
 
       - name: Build with Maven and Run Chrome Tests on Windows
         run: |
