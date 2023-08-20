@@ -16,10 +16,12 @@ public class SampleTest {
         caps.setCapability("browser_version", "latest");
         caps.setCapability("os", "Windows");
         caps.setCapability("os_version", "10");
+        caps.setCapability("browserstack.appstore_distribution", "public"); // Add this line
 
         // Initialize WebDriver for Chrome on Windows
         driver = new RemoteWebDriver(new URL("https://hub.browserstack.com/wd/hub"), caps);
     }
+
 
     public void testJoinTheSpot() {
         // Navigate to jointhespot.com
