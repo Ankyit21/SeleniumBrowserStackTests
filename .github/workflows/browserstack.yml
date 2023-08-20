@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           os: "Windows"
-          os_version: "10"
+          os_version: "11"
           browser: "chrome"
           browser_version: "latest"
 
@@ -34,6 +34,6 @@ jobs:
           mvn test -Dtest=SampleTest  # Adjust this command as needed
 
       - name: Clean up Chrome browser
-        uses: browserstack/github-action@master
+        uses: browserstack/github-action@v2
         with:
           delete: true
