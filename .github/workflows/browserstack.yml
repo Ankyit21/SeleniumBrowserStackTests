@@ -19,6 +19,21 @@ jobs:
           distribution: 'adopt'  # Use 'adopt' for AdoptOpenJDK
           java-version: '11'     # Specify the desired Java version
 
-      - name: Build with Maven and Run Chrome Tests on Windows
+      - name: Set up Chrome browser
+        uses: browserstack/github-action@master
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          os: "Windows"
+          os_version: "10"
+          browser: "chrome"
+          browser_version: "latest"
+
+      - name: Run Selenium Tests
         run: |
-          mvn clean test -D browserstack.username=${{ secrets.BROWSERSTACK_USERNAME }} -D browserstack.accesskey=${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          mvn test -Dtest=SampleTest  # Adjust this command as needed
+
+      - name: Clean up Chrome browser
+        uses: browserstack/github-action@master
+        with:
+          delete: true
